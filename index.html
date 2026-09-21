@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SimPT: An Automated Simulation Framework for Intervention-Based VLA Post-Training</title>
+  <meta name="description" content="SimPT automates intervention-based VLA post-training in simulation, from progress-aware expert recovery to algorithm development and standalone evaluation.">
+  <meta name="author" content="Anonymous Authors">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#24496A">
+  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
+  <link rel="stylesheet" href="static/css/fonts.css">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/template.css">
+  <link rel="stylesheet" href="static/css/simpt.css">
+  <script defer src="static/js/index.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<main id="main-content">
+  <section class="hero publication-header">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">SimPT: An Automated Simulation Framework for Intervention-Based VLA Post-Training</h1>
+            <div class="is-size-5 publication-authors"><span class="author-block">Anonymous Authors</span></div>
+            <p class="publication-status">ICRA 2027 · Anonymous Submission</p>
+            <div class="publication-links">
+              <a class="button is-normal is-rounded is-dark" href="static/pdfs/SimPT_ICRA2027.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7zM14 3v5h4M10 12h5M10 16h5"/></svg><span>Paper</span></a>
+              <button class="button is-normal is-rounded is-dark resource-pending" type="button" disabled title="arXiv link will be added when available"><span class="arxiv-icon" aria-hidden="true">χ</span><span>arXiv</span></button>
+              <button class="button is-normal is-rounded is-dark resource-pending" type="button" disabled title="GitHub link will be added when available"><svg viewBox="0 0 24 24" class="github-icon" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.23c-3.34.72-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.8 5.63-5.48 5.93.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/></svg><span>GitHub</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser" id="video" aria-label="Video overview">
+    <div class="container is-max-desktop">
+      <figure class="overview-video">
+        <video controls playsinline preload="none" poster="static/images/video-first-frame.jpg" width="1920" height="1080" aria-label="SimPT video presentation">
+          <source src="static/videos/simpt-overview.mp4" type="video/mp4">
+          <track kind="captions" src="static/videos/overview-en.vtt" srclang="en" label="English">
+          Your browser does not support embedded video. <a href="static/videos/simpt-overview.mp4">Download the video.</a>
+        </video>
+        <figcaption><strong>From policy failure to corrective experience.</strong> SimPT supports the development of intervention-based VLA post-training algorithms in simulation.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section soft-section" id="abstract">
+    <div class="container is-max-desktop reading-width">
+      <h2 class="title is-3 has-text-centered">Abstract</h2>
+      <div class="content abstract-text">
+        <!-- Abstract transcribed from SimPT_ICRA2027.tex. -->
+        <p>Human-in-the-loop (HIL) post-training improves vision–language–action (VLA) policies through expert corrections, but costly human supervision and repeated real-robot evaluation limit algorithm exploration and development. We introduce <strong>SimPT (Simulation-based Post-Training)</strong>, a simulation framework that automates intervention-based VLA post-training by integrating policy rollouts, corrective data collection, policy training, and standalone evaluation. To automatically determine intervention timing and recovery strategies, we develop an Agent-Compiled Progress Graph that tracks task progress using privileged simulator state and retains stable snapshots during policy execution. After a rollout fails, a CuRobo-based expert attempts recovery from these snapshots, starting at more advanced task stages and falling back to earlier ones as needed to generate corrective trajectories. We implement and compare four post-training methods, RECAP, HG-DAgger, DPO+SFT, and FlowPRO, across seven RoboTwin manipulation tasks. Relative to a fixed-interval snapshot baseline, the Progress Graph reduces recovery attempts by 75.0% and increases recovery success from 93.4% to 98.9%. Using SimPT, we develop RECAP-CF-LPF, a refinement of RECAP that combines cross-fitting and low-pass filtering of value predictions. This refinement increases the overall success rate from 76.50% to 79.36% in held-out simulation trials. In real-robot HIL post-training, it increases the success rate from 72% to 96% across 25 scenarios of an Ethernet cable-insertion task. These results demonstrate the utility of SimPT for exploring and developing VLA post-training algorithms.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="method">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Framework overview</h2>
+      <p class="section-intro">Collect corrective experience, compare algorithms, and evaluate the updated policy under controlled conditions.</p>
+      <figure class="paper-figure">
+        <a href="static/images/framework.webp" target="_blank" rel="noopener" aria-label="Open the SimPT framework figure at full resolution"><img src="static/images/framework.webp" alt="SimPT framework: Progress Graph construction, simulated corrective data collection, algorithm development, and simulation and real-robot evaluation." width="4200" height="2799" loading="lazy"></a>
+        <figcaption>An agent constructs and validates the Progress Graph; simulated expert trajectories calibrate its thresholds. Stable snapshots support recovery after rollout failure. Controlled post-training experiments inform algorithm refinement.</figcaption>
+      </figure>
+      <h3 class="title is-4 has-text-centered subsection-title">Agent-Compiled Progress Graph</h3>
+      <figure class="paper-figure">
+        <a href="static/images/progress-graph.webp" target="_blank" rel="noopener" aria-label="Open the Progress Graph figure at full resolution"><img src="static/images/progress-graph.webp" alt="Lift Pot Progress Graph with task stages and representative images illustrating progress and recovery snapshots." width="2800" height="734" loading="lazy"></a>
+        <figcaption>Lift Pot illustrates progress-aware snapshot selection. Images represent task stages; the graph runs fixed checks on privileged simulator state during collection.</figcaption>
+      </figure>
+      <div class="table-container">
+        <table class="table is-fullwidth result-table">
+          <caption>Recovery across seven RoboTwin tasks</caption>
+          <thead><tr><th scope="col">Metric</th><th scope="col">Fixed interval</th><th scope="col">Progress Graph</th></tr></thead>
+          <tbody><tr><th scope="row">Total recovery attempts ↓</th><td>3,781</td><td class="pg-value">945 <span class="metric-note">(−75.0%)</span></td></tr><tr><th scope="row">Attempts per successful recovery ↓</th><td>7.62</td><td class="pg-value">1.79</td></tr><tr><th scope="row">Recovery success ↑</th><td>93.4%</td><td class="pg-value">98.9%</td></tr></tbody>
+        </table>
+      </div>
+      <p class="figure-note">Independent collections use the same parent policy, prescribed seeds, and recovery expert. Recovery success is measured over failed policy rollouts.</p>
+    </div>
+  </section>
+
+  <section class="section" id="results">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Simulation results</h2>
+      <p class="section-intro">Four methods. Seven manipulation tasks. 1,400 held-out trials per method.</p>
+      <figure class="paper-figure">
+        <a href="static/images/algorithm-comparison.webp" target="_blank" rel="noopener" aria-label="Open the algorithm comparison figure at full resolution"><img src="static/images/algorithm-comparison.webp" alt="Success rates for SFT, HG-DAgger, RECAP, DPO plus SFT, and FlowPRO across seven RoboTwin tasks." width="2800" height="1080" loading="lazy"></a>
+        <figcaption>All post-training methods use Progress Graph collection. Task bars show success rates; wide gray bars show seven-task means. Whiskers indicate 95% bootstrap confidence intervals over evaluation seeds, conditional on the trained policies.</figcaption>
+      </figure>
+      <div class="content reading-width results-copy"><p><strong>HG-DAgger achieves the highest mean success rate, 82.14%.</strong> RECAP reaches 76.50%, compared with 67.29% for the SFT parent. FlowPRO and DPO+SFT reach 71.86% and 63.14%, respectively.</p><p>Each method uses a fixed collection dataset and 10,000 training steps. Evaluation runs the updated VLA policy alone, without the Progress Graph, recovery expert, or privileged simulator state.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="refinement">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">RECAP-CF-LPF</h2>
+      <p class="section-intro">RECAP-CF-LPF combines five-fold cross-fitting with low-pass filtering to refine value predictions.</p>
+      <div class="columns is-variable is-6 refinement-figures">
+        <div class="column"><figure class="paper-figure"><a href="static/images/value-predictions.webp" target="_blank" rel="noopener" aria-label="Open value prediction comparison"><img src="static/images/value-predictions.webp" alt="Value estimates and grasp timing in a Place Can Basket recovery trajectory." width="2040" height="1650" loading="lazy"></a><figcaption>In a Place Can Basket recovery trajectory, cross-fitted predictions align more closely with gripper closure. Low-pass filtering smooths local fluctuations.</figcaption></figure></div>
+        <div class="column"><figure class="paper-figure"><a href="static/images/heldout-refinement.webp" target="_blank" rel="noopener" aria-label="Open held-out RECAP comparison"><img src="static/images/heldout-refinement.webp" alt="Held-out task success rates comparing standard RECAP and RECAP-CF-LPF." width="1360" height="980" loading="lazy"></a><figcaption>Across 1,400 held-out simulation trials per variant, mean success improves from <strong>76.50% to 79.36%</strong> (+2.86 percentage points; 95% paired-bootstrap CI: 0.36–5.36).</figcaption></figure></div>
+      </div>
+      <p class="figure-note">Results evaluate the combined CF-LPF refinement after one post-training iteration on fixed data.</p>
+    </div>
+  </section>
+
+  <section class="section" id="real-robot">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Real-robot validation</h2>
+      <p class="section-intro">Applying the simulation-developed refinement to human-in-the-loop Ethernet cable insertion.</p>
+      <div class="columns is-variable is-6 real-layout">
+        <div class="column is-7"><figure class="paper-figure"><video controls playsinline preload="none" poster="static/images/real-robot-poster.jpg" width="1280" height="720" aria-label="Real-robot Ethernet cable insertion task demonstration"><source src="static/videos/ethernet-insertion.mp4" type="video/mp4">Your browser does not support embedded video. <a href="static/videos/ethernet-insertion.mp4">Download the video.</a></video><figcaption>Task demonstration: grasp the cable, hand it over, then insert the plug. Quantitative results below are reported from the paper’s 25-scenario evaluation.</figcaption></figure></div>
+        <div class="column is-5 real-copy"><h3>From grasping to insertion</h3><p>Two AgileX PiPER arms perform a bimanual manipulation task observed by one head camera and two wrist cameras.</p><p>Human experts collect demonstrations and interventions using master arms. Both variants train on the same 1,672 trajectories: 200 demonstrations, 802 intervention episodes, and 670 autonomous rollouts.</p></div>
+      </div>
+      <div class="table-container"><table class="table is-fullwidth result-table"><caption>Ethernet insertion · 25 scenarios per variant</caption><thead><tr><th scope="col">Method</th><th scope="col">Successful scenarios</th><th scope="col">Success rate</th><th scope="col">Cumulative progress</th></tr></thead><tbody><tr><th scope="row">RECAP</th><td>18 / 25</td><td>72%</td><td>59 / 75</td></tr><tr class="refined-row"><th scope="row">RECAP-CF-LPF</th><td>24 / 25</td><td>96%</td><td>72 / 75</td></tr></tbody></table></div>
+      <p class="figure-note">Scenarios vary cable length, initial position, and chassis placement. Grasping, handover, and insertion each add one progress point; full insertion defines success.</p>
+    </div>
+  </section>
+
+  <section class="section" id="bibtex">
+    <div class="container is-max-desktop reading-width">
+      <div class="citation-heading"><h2 class="title is-3">BibTeX</h2><button class="button copy-button" type="button" id="copy-bibtex">Copy</button></div>
+      <p class="citation-note">Anonymous manuscript citation.</p>
+      <pre><code id="bibtex-code">@misc{simpt2026,
+  title = {SimPT: An Automated Simulation Framework for
+           Intervention-Based VLA Post-Training},
+  author = {{Anonymous Authors}},
+  year = {2026},
+  note = {Anonymous submission to ICRA 2027}
+}</code></pre>
+      <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+<footer class="footer"><div class="container is-max-desktop has-text-centered"><p>Built with the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>, adapted from <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>.</p><p>Website template: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.</p></div></footer>
+</body>
+</html>

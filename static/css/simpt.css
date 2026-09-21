@@ -1,0 +1,92 @@
+/* SimPT paper palette; layout adapted from Academic Project Page Template. */
+:root {
+  --primary-color: #24496a;
+  --primary-hover: #267d7f;
+  --text-primary: #263746;
+  --text-secondary: #637282;
+  --background-secondary: #f4f7fa;
+  --border-color: #d5dfe7;
+  --refined-ink: #94562e;
+  --gradient-accent: linear-gradient(90deg, #24496a, #267d7f);
+}
+html { scroll-padding-top: 1.5rem; }
+body { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+a { color: var(--primary-color); }
+a:hover { color: var(--primary-hover); }
+.skip-link { position: absolute; top: -5rem; left: 1rem; z-index: 10; background: white; padding: .8rem; }
+.skip-link:focus { top: 1rem; }
+.container.is-max-desktop { max-width: 960px; }
+.container.reading-width, .reading-width { max-width: 768px; margin-inline: auto; }
+.publication-header .hero-body { padding: 4rem 1.5rem 2rem; }
+.publication-title { font-size: 3rem; letter-spacing: -.025em; }
+.publication-authors { margin-bottom: .4rem; }
+.publication-status { margin-bottom: 1.8rem; color: var(--text-secondary); font-size: .95rem; }
+.publication-links { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; }
+.publication-links .button { padding-inline: 1rem; }
+.publication-links .resource-pending { opacity: .65; cursor: default; transform: none; box-shadow: none; }
+.publication-links .resource-pending:hover { background: var(--text-primary) !important; }
+.publication-links .github-icon { fill: currentColor; stroke: none; }
+.arxiv-icon { font-family: Georgia, serif; font-size: 1.4rem; margin-right: .45rem; line-height: 1; }
+.publication-links svg { width: 1.1rem; height: 1.1rem; margin-right: .45rem; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+.teaser { padding: 1rem 1.5rem 3rem; }
+.overview-video { max-width: 912px; margin-inline: auto; }
+video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #e7ebef; border-radius: 10px; }
+figcaption { margin-top: .85rem; font-size: .94rem; line-height: 1.65; color: var(--text-secondary); }
+.overview-video figcaption { text-align: center; font-size: 1.05rem; color: var(--text-primary); max-width: 840px; margin-inline: auto; }
+.section { padding: 3.6rem 1.5rem; }
+.soft-section { background: var(--background-secondary); }
+.title.is-3 { font-size: 1.95rem; line-height: 1.25; font-weight: 700; color: var(--text-primary); margin-bottom: 1.1rem; letter-spacing: -.025em; }
+.title.is-4 { font-size: 1.45rem; line-height: 1.35; }
+.section-intro { max-width: 760px; margin: 0 auto 2rem; text-align: center; font-size: 1.08rem; line-height: 1.65; color: var(--text-secondary); }
+.abstract-text { text-align: justify; line-height: 1.8; font-size: 1.1rem; }
+.paper-figure { margin: 0; }
+.paper-figure img { display: block; width: 100%; height: auto; }
+.paper-figure a { display: block; }
+.paper-figure a:focus-visible { outline: 3px solid var(--primary-color); outline-offset: 5px; }
+.real-copy h3 { font-size: 1.12rem; font-weight: 700; color: var(--primary-color); margin-bottom: .55rem; }
+.real-copy p { font-size: 1rem; line-height: 1.75; }
+.subsection-title { margin-top: 2.8rem; }
+.table-container { margin: 2rem 0 .75rem; }
+.result-table { background: transparent; font-size: .98rem; }
+.result-table caption { text-align: left; font-size: 1.08rem; font-weight: 650; padding: 0 0 .8rem; color: var(--primary-color); }
+.result-table th, .result-table td { padding: .85rem .8rem; vertical-align: middle; border-color: var(--border-color); }
+.result-table thead th { color: var(--text-secondary); font-weight: 600; font-size: .9rem; }
+.result-table tbody th { color: var(--text-primary); font-weight: 500; }
+.result-table td { font-variant-numeric: tabular-nums; }
+.result-table .pg-value { font-weight: 700; color: #267d7f; }
+.metric-note { font-weight: 500; white-space: nowrap; }
+.figure-note { color: var(--text-secondary); font-size: .9rem; line-height: 1.7; }
+.results-copy { margin-top: 1.6rem; font-size: 1.04rem; line-height: 1.8; }
+.refinement-figures { align-items: flex-start; margin-bottom: 1.4rem; }
+.refinement-figures img { height: 355px; object-fit: contain; }
+.real-layout { align-items: center; }
+.real-copy p + p { margin-top: .9rem; }
+.refined-row th, .refined-row td { color: var(--refined-ink) !important; font-weight: 650 !important; }
+.citation-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.citation-heading .title { margin-bottom: 0; }
+.copy-button { background: var(--background-secondary); color: var(--primary-color); min-width: 5rem; }
+.citation-note { font-size: .9rem; color: var(--text-secondary); margin: .8rem 0; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; border-radius: 8px; padding: 1.4rem; background: var(--background-secondary); font-size: .9rem; line-height: 1.7; }
+.copy-status { min-height: 1.6em; font-size: .9rem; color: var(--primary-hover); }
+.footer { padding: 2rem 1.5rem; background: var(--background-secondary); font-size: .88rem; color: var(--text-secondary); }
+.footer p + p { margin-top: .3rem; }
+.footer a { text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--primary-color); outline-offset: 3px; }
+@media (max-width: 768px) {
+  .columns.is-variable { --columnGap: 0; margin-inline: 0; }
+  .publication-header .hero-body { padding: 2.2rem 1.2rem 1.4rem; }
+  .publication-title { font-size: 2rem !important; letter-spacing: -.02em; }
+  .section { padding: 2.5rem 1.2rem; }
+  .teaser { padding-inline: 1rem; }
+  .abstract-text { text-align: left; }
+  .title.is-3 { font-size: 1.65rem; }
+  .refinement-figures img { height: auto; max-height: 420px; }
+  .table-container { overflow-x: auto; }
+  .result-table { min-width: 540px; }
+  .overview-video figcaption { font-size: .98rem; }
+  .publication-links .button, .copy-button { width: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

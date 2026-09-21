@@ -1,0 +1,118 @@
+WEBVTT
+
+00:00:02.600 --> 00:00:07.223
+Human-in-the-loop methods improve VLA policies through expert corrections,
+
+00:00:07.345 --> 00:00:11.470
+but collecting those corrections and repeatedly evaluating on real robots
+
+00:00:11.471 --> 00:00:14.790
+require substantial human effort and hardware use.
+
+00:00:15.601 --> 00:00:19.592
+To lower the cost of exploring and developing HIL algorithms,
+
+00:00:19.660 --> 00:00:24.915
+we introduce SimPT, a simulation framework that automates policy rollouts,
+
+00:00:24.983 --> 00:00:29.888
+corrective data collection, policy post-training, and standalone evaluation.
+
+00:00:30.841 --> 00:00:33.810
+At its core is automated recovery after failure.
+
+00:00:35.017 --> 00:00:37.287
+Automating recovery requires deciding
+
+00:00:37.288 --> 00:00:39.209
+where to resume a failed rollout,
+
+00:00:39.318 --> 00:00:42.408
+and how the expert should complete the task from that state.
+
+00:00:43.219 --> 00:00:45.611
+Since both depend on task progress,
+
+00:00:45.679 --> 00:00:49.079
+SimPT uses an Agent-Compiled Progress Graph.
+
+00:00:49.916 --> 00:00:54.512
+GPT agents first compile candidate graphs from task information,
+
+00:00:54.513 --> 00:00:59.137
+and the selected graph is validated and calibrated before use.
+
+00:00:59.167 --> 00:01:02.795
+During execution, fixed checks on privileged simulator state
+
+00:01:02.796 --> 00:01:08.236
+track progress and retain stable snapshots, without further agent queries.
+
+00:01:08.266 --> 00:01:12.500
+After a rollout fails, SimPT invokes the programmatic expert
+
+00:01:12.501 --> 00:01:17.134
+from advanced snapshots and falls back to earlier stages as needed.
+
+00:01:17.164 --> 00:01:21.209
+Successful and failed rollouts, plus corrective trajectories,
+
+00:01:21.210 --> 00:01:23.706
+form the post-training buffer.
+
+00:01:23.736 --> 00:01:25.739
+This creates a repeatable pipeline
+
+00:01:25.740 --> 00:01:30.887
+whose standalone evaluation compares policies under controlled conditions.
+
+00:01:31.716 --> 00:01:36.205
+This repeatability supports comparisons at two levels.
+
+00:01:36.235 --> 00:01:40.577
+For recovery, the Progress Graph requires seventy-five percent fewer attempts
+
+00:01:40.578 --> 00:01:43.517
+than the fixed-interval Naive baseline.
+
+00:01:43.547 --> 00:01:47.095
+For learning, SimPT enables us to implement and compare
+
+00:01:47.096 --> 00:01:50.695
+four post-training methods across seven tasks.
+
+00:01:50.725 --> 00:01:54.878
+Using SimPT, we develop RECAP-CF-LPF,
+
+00:01:54.879 --> 00:01:57.485
+a refinement of RECAP that combines cross-fitting
+
+00:01:57.486 --> 00:02:00.869
+and low-pass filtering of value predictions.
+
+00:02:00.899 --> 00:02:04.488
+This refinement improves overall held-out simulation success
+
+00:02:04.489 --> 00:02:07.872
+by two point eight six percentage points.
+
+00:02:07.902 --> 00:02:12.364
+We then apply it to real-robot human-in-the-loop post-training.
+
+00:02:13.183 --> 00:02:16.704
+Across twenty-five Ethernet cable-insertion scenarios,
+
+00:02:16.705 --> 00:02:22.592
+RECAP-CF-LPF increases success from seventy-two to ninety-six percent.
+
+00:02:22.622 --> 00:02:24.785
+Together, these results close the loop
+
+00:02:24.786 --> 00:02:28.737
+from systematic simulation experiments to real-robot validation,
+
+00:02:28.738 --> 00:02:32.379
+demonstrating SimPT's utility for exploring and developing
+
+00:02:32.380 --> 00:02:36.546
+intervention-based VLA post-training algorithms.
