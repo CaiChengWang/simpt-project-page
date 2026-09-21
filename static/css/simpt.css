@@ -90,3 +90,11 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; border-radius: 8px; paddin
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+.paper-reader { max-height: 80vh; overflow-y: auto; background: #e7ebef; border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; }
+.manuscript-page { margin: 0; }
+.manuscript-page + .manuscript-page { margin-top: 1.5rem; }
+.manuscript-page figcaption { margin: 0 0 .5rem; text-align: center; font-size: .85rem; }
+.manuscript-page a, .manuscript-page img { display: block; width: 100%; }
+.manuscript-page img { height: auto; background: white; }
+@media (max-width: 768px) { .paper-reader { padding: .5rem; } }
